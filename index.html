@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️ — A Letter From Aunj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ░░ AUDIO ░░ -->
+  <audio id="bg-music" loop>
+    <source id="audio-source" src="" type="audio/mpeg" />
+  </audio>
+
+  <!-- ░░ TOP NAVBAR ░░ -->
+  <header id="main-header">
+    <div class="nav-container">
+      <!-- Brand / Title -->
+      <div class="nav-brand" onclick="goToPage(1)">
+        <span class="nav-heart hb">❤️</span>
+        <span class="nav-title handwritten">For <span class="her-name">You</span></span>
+      </div>
+
+      <!-- Quick Nav Links (Desktop/Tablet) -->
+      <nav class="nav-links" id="nav-links">
+        <button class="nav-tab active" data-page="1" onclick="goToPage(1)">Intro</button>
+        <button class="nav-tab" data-page="2" onclick="goToPage(2)">Our Story</button>
+        <button class="nav-tab" data-page="3" onclick="goToPage(3)">Why You</button>
+        <button class="nav-tab" data-page="4" onclick="goToPage(4)">My Heart</button>
+        <button class="nav-tab" data-page="5" onclick="goToPage(5)">My Letter</button>
+        <button class="nav-tab highlight-tab" data-page="6" onclick="goToPage(6)">The Question ❤️</button>
+      </nav>
+
+      <!-- Music Player & Back Button -->
+      <div class="nav-controls">
+        <button id="nav-back-btn" class="nav-ctrl-btn hidden" onclick="prevPage()" title="Previous Page">
+          <span>← Back</span>
+        </button>
+
+        <div id="music-player" class="music-glass">
+          <button id="play-btn" class="music-play-btn" title="Play / Pause Romantic Music">
+            <svg id="play-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="pause-icon" class="hidden" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          
+          <div class="music-details">
+            <div class="music-top-line">
+              <span class="song-label">Our Romantic Melody 🎵</span>
+              <div class="sound-wave" id="sound-wave">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div id="seek-wrap">
+              <span id="cur-time">0:00</span>
+              <input id="seek-bar" type="range" value="0" max="100" step="0.1" />
+              <span id="dur-time">0:00</span>
+            </div>
+          </div>
+
+          <div class="volume-container">
+            <span class="vol-icon">🔊</span>
+            <input id="vol-bar" type="range" value="80" max="100" title="Volume" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Rail Under Navbar -->
+    <div id="progress-rail"><div id="progress-bar"></div></div>
+  </header>
+
+  <!-- ░░ GLOBAL CANVAS (particles) ░░ -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ░░ PAGES ░░ -->
+  <div id="pages-wrapper">
+
+    <!-- PAGE 1 — OPENING -->
+    <section id="p1" class="page active" data-theme="sunset">
+      <div class="bg-layer" style="background-image:url('images/bg1.jpg')"></div>
+      <div class="overlay sunset-overlay"></div>
+      <div class="aurora"></div>
+      <div class="content center">
+        <div class="badge-pulse">✨</div>
+        <h1 class="handwritten big-title reveal-up">
+          Hey, <span class="her-name accent">You</span>…
+          <span class="hb">❤️</span>
+        </h1>
+        <p class="serif-sub reveal-up d2" style="font-size:1.45rem; max-width:680px; margin:1rem auto 0; line-height:1.6;">
+          In a world full of ordinary moments, you somehow became the most captivating part of my days.
+        </p>
+        <p class="small-note reveal-up d3" style="margin-top:0.8rem; font-size:1.05rem; opacity:0.85;">
+          I have a little secret from my heart that I’ve been longing to share with you…
+        </p>
+        <button class="cta-btn reveal-up d4" onclick="nextPage()">
+          Step into our story
+          <span class="arrow">→</span>
+        </button>
+      </div>
+      <div class="scroll-hint reveal-up d5">scroll or click to begin ✨</div>
+    </section>
+
+    <!-- PAGE 2 — OUR STORY -->
+    <section id="p2" class="page" data-theme="blush">
+      <div class="bg-layer" style="background-image:url('images/bg2.jpg')"></div>
+      <div class="overlay blush-overlay"></div>
+      <div class="content">
+        <h2 class="handwritten sec-title accent reveal-up">Maybe You Didn’t Notice… But My Heart Did ❤️</h2>
+        <p class="serif-sub text-center reveal-up d2" style="font-size:1.35rem; max-width:720px; margin:0 auto 2rem; line-height:1.6;">
+          I still remember the first time you caught my eye. You didn’t just grab my attention—you completely changed the atmosphere, and suddenly, every day felt a little warmer with you in it.
+        </p>
+
+        <div class="photo-grid">
+          <div class="photo-card reveal-up d2">
+            <div class="photo-frame">
+              <img class="photo photo-1" src="images/photo1.jpg" alt="Our conversations" />
+              <div class="photo-shine"></div>
+            </div>
+            <p><strong>The first hello & chats ☕</strong><br /><span style="font-size:0.8rem; opacity:0.8;">Where simple words felt like magic</span></p>
+          </div>
+          <div class="photo-card reveal-up d3">
+            <div class="photo-frame">
+              <img class="photo photo-2" src="images/photo2.jpg" alt="The little moments" />
+              <div class="photo-shine"></div>
+            </div>
+            <p><strong>The way you smile ✨</strong><br /><span style="font-size:0.8rem; opacity:0.8;">Brighter than morning sunshine</span></p>
+          </div>
+          <div class="photo-card reveal-up d4">
+            <div class="photo-frame">
+              <img class="photo photo-3" src="images/photo3.jpg" alt="The random laughs" />
+              <div class="photo-shine"></div>
+            </div>
+            <p><strong>Those sweet laughs 😊</strong><br /><span style="font-size:0.8rem; opacity:0.8;">The sound that plays in my head all day</span></p>
+          </div>
+          <div class="photo-card reveal-up d5">
+            <div class="photo-frame special-card">
+              <img class="photo photo-4" src="images/photo4.jpg" alt="You became special" />
+              <div class="photo-shine"></div>
+            </div>
+            <p class="handwritten accent" style="font-size:1.35rem;"><strong>And how you stole my heart ❤️</strong><br /><span style="font-size:0.82rem; color:var(--deep-purple);">Without even trying</span></p>
+          </div>
+        </div>
+
+        <button class="cta-btn center-btn reveal-up d5" onclick="nextPage()">Next →</button>
+      </div>
+    </section>
+
+    <!-- PAGE 3 — THINGS I LIKE -->
+    <section id="p3" class="page" data-theme="lavender">
+      <div class="bg-layer" style="background-image:url('images/bg3.jpg')"></div>
+      <div class="overlay lavender-overlay"></div>
+      <div class="content">
+        <h2 class="handwritten sec-title accent reveal-up">The Little Things That Made Me Fall For You ❤️</h2>
+        <p class="serif-sub text-center reveal-up d1" style="margin-bottom:1.5rem; font-size:1.25rem;">
+          There is something truly rare and enchanting about the way you exist in this world…
+        </p>
+        <div class="like-cards">
+          <div class="like-card glass reveal-up d1">
+            <span class="card-icon">✨</span>
+            <p><strong>Your effortless grace & charm</strong><br /><span style="font-size:0.85rem; opacity:0.8;">The natural elegance you bring wherever you walk.</span></p>
+          </div>
+          <div class="like-card glass reveal-up d2">
+            <span class="card-icon">😊</span>
+            <p><strong>The way your smile lights up everything</strong><br /><span style="font-size:0.85rem; opacity:0.8;">It has this hypnotic way of making any bad day disappear.</span></p>
+          </div>
+          <div class="like-card glass reveal-up d3">
+            <span class="card-icon">🌸</span>
+            <p><strong>Your gentle kindness and warm soul</strong><br /><span style="font-size:0.85rem; opacity:0.8;">A soft, calming energy that makes everyone feel loved and safe.</span></p>
+          </div>
+          <div class="like-card glass reveal-up d4">
+            <span class="card-icon">💫</span>
+            <p><strong>How genuinely authentic & real you are</strong><br /><span style="font-size:0.85rem; opacity:0.8;">No pretenses, just pure, beautiful, adorable confidence.</span></p>
+          </div>
+          <div class="like-card glass reveal-up d5">
+            <span class="card-icon">❤️</span>
+            <p><strong>The quiet little details about you</strong><br /><span style="font-size:0.85rem; opacity:0.8;">The little expressions you make that you probably think nobody noticed.</span></p>
+          </div>
+        </div>
+        <button class="cta-btn center-btn reveal-up d6" onclick="nextPage()">Next →</button>
+      </div>
+    </section>
+
+    <!-- PAGE 4 — WHY I'M TELLING YOU -->
+    <section id="p4" class="page" data-theme="midnight">
+      <div class="bg-layer" style="background-image:url('images/bg4.jpg')"></div>
+      <div class="overlay dark-overlay"></div>
+      <div class="particle-field" id="particle-field-4"></div>
+      <div class="content center">
+        <h2 class="handwritten sec-title light reveal-up">So… Why Am I Pouring My Heart Out?</h2>
+        <div class="reason-lines">
+          <p class="reason reveal-up d2">Because every time I see you, my heart whispers: <em>“Don’t let her pass by without knowing how special she is.”</em></p>
+          <p class="reason reveal-up d3">Because I’d rather take the bravest chance with you than spend a lifetime wondering <em>“what if?”</em></p>
+          <p class="reason reveal-up d4 accent-bright handwritten" style="font-size:2.2rem; text-shadow:0 0 25px var(--pink);">I don’t just like you… I am completely enchanted by you.</p>
+          <p class="reason reveal-up d5">And I would love nothing more than the opportunity to walk beside you, hear your dreams, and get to know the beautiful person you are.</p>
+        </div>
+        <button class="cta-btn glow-btn reveal-up d6" onclick="nextPage()">There’s one more thing… ❤️</button>
+      </div>
+    </section>
+
+    <!-- PAGE 5 — THE LETTER -->
+    <section id="p5" class="page" data-theme="petal">
+      <div class="bg-layer" style="background-image:url('images/bg5.jpg')"></div>
+      <div class="overlay petal-overlay"></div>
+      <div class="content">
+        <h2 class="handwritten sec-title accent reveal-up">A Letter From My Heart To Yours 💌</h2>
+        <div class="letter reveal-up d2">
+          <div class="letter-lines">
+            <div class="letter-line"></div><div class="letter-line"></div>
+            <div class="letter-line"></div><div class="letter-line"></div>
+            <div class="letter-line"></div><div class="letter-line"></div>
+            <div class="letter-line"></div><div class="letter-line"></div>
+          </div>
+          <p>I don’t know where you are or what’s crossing your mind right now as your eyes trace these lines.</p>
+          <p>Maybe you’re smiling softly.<br />Maybe your heart skipped just a tiny beat, the way mine does whenever you’re near.<br />Maybe you’re surprised to discover just how deeply you’ve captured my thoughts.</p>
+          <p>Truth is, you’ve become the brightest and sweetest part of my days.</p>
+          <p>I find myself looking forward to every glance, every conversation, and every little moment we share.</p>
+          <p>I’m not here to rush your world or put any pressure on your shoulders.</p>
+          <p>I simply wanted to lay my feelings honestly in front of you—sincere, pure, and real.</p>
+          <p>I want to take you out for cozy coffee dates, talk about life until the hours disappear, make you laugh until your cheeks hurt, and see where this spark could take us.</p>
+          <p>All I ask for is a chance to show you how genuinely wonderful you are to me.</p>
+          <p class="signature handwritten">— Yours sincerely, <span class="my-name">Aunj</span> ❤️</p>
+        </div>
+        <button class="cta-btn center-btn reveal-up d3" onclick="nextPage()">Read on →</button>
+      </div>
+    </section>
+
+    <!-- PAGE 6 — THE QUESTION -->
+    <section id="p6" class="page" data-theme="deep-night">
+      <div class="bg-layer" style="background-image:url('images/bg6.jpg')"></div>
+      <div class="overlay deep-overlay"></div>
+      <div class="aurora aurora-2"></div>
+      <canvas id="star-canvas"></canvas>
+
+      <div class="floating-flowers">
+        <span>🌸</span><span>🌹</span><span>🌺</span><span>✨</span>
+        <span>🌸</span><span>💫</span><span>🌹</span><span>✨</span>
+      </div>
+
+      <div class="content center">
+        <p class="serif-sub light reveal-up" style="font-size:1.45rem; letter-spacing:.18em; text-transform:uppercase; opacity:.8;">
+          Take a breath… here is my heart’s only wish…
+        </p>
+        <div class="glowing-heart reveal-up d2">❤️</div>
+        <h1 class="handwritten question-title reveal-up d3" style="font-size:clamp(3.2rem, 8.5vw, 6rem);">
+          Will you give me<br />a chance?
+        </h1>
+        <p class="small-note reveal-up d4" style="font-size:1.15rem; line-height:1.8; max-width:620px; margin:0 auto;">
+          No rush. No expectations. No pressure at all.<br />
+          Just cozy coffee dates, endless laughter, and a chance for us to write a beautiful story together.
+        </p>
+        <div class="answer-btns reveal-up d5">
+          <button class="yes-btn" onclick="goToPage(7)">YES, LET’S BEGIN ❤️</button>
+          <button class="think-btn" onclick="goToPage(8)">LET ME THINK, AUNJ 💕</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 7 — YES! -->
+    <section id="p7" class="page" data-theme="celebrate">
+      <div class="bg-layer" style="background-image:url('images/bg7.jpg')"></div>
+      <div class="overlay celebrate-overlay"></div>
+      <div class="content center">
+        <h1 class="handwritten big-title glow-pink reveal-up bounce">You Just Made My Whole World Glow. ❤️</h1>
+        <p class="serif-sub light reveal-up d2" style="font-size:1.5rem; margin-top:1rem;">
+          My heart is celebrating right now… this is the start of something truly magical between us.
+        </p>
+        <div class="loading-date reveal-up d3">
+          <div class="loading-bar-wrap"><div class="loading-bar-fill"></div></div>
+          <p class="handwritten" style="font-size:2.3rem; margin-top:1rem; color:#fff; text-shadow:0 0 20px var(--pink);">
+            Our first date loading… ☕🌹✨
+          </p>
+        </div>
+        <button class="cta-btn glow-btn reveal-up d4" onclick="goToPage(9)">See what awaits us →</button>
+      </div>
+    </section>
+
+    <!-- PAGE 8 — NEEDS TIME -->
+    <section id="p8" class="page" data-theme="warm">
+      <div class="bg-layer" style="background-image:url('images/bg8.jpg')"></div>
+      <div class="overlay warm-overlay"></div>
+      <div class="content center">
+        <h1 class="handwritten big-title reveal-up" style="font-size:clamp(2.5rem, 7vw, 5rem);">
+          Take All The Time In The World. ❤️
+        </h1>
+        <p class="serif-sub reveal-up d2" style="font-size:1.4rem; max-width:650px; margin:1rem auto 0; line-height:1.6;">
+          Whatever your heart decides, I am just so grateful that I had the courage to tell you how truly special you are.
+        </p>
+        <div class="warm-note reveal-up d3">
+          <p>No pressure. No awkwardness at all.</p>
+          <p>Just genuine honesty, deep respect, and a warm smile waiting for you whenever you’re ready. 🌸</p>
+        </div>
+        <button class="cta-btn reveal-up d4" onclick="goToPage(1)">Read it all again ↺</button>
+      </div>
+    </section>
+
+    <!-- PAGE 9 — FINAL -->
+    <section id="p9" class="page" data-theme="finale">
+      <div class="bg-layer" style="background-image:url('images/bg9.jpg')"></div>
+      <div class="overlay finale-overlay"></div>
+      <canvas id="finale-stars"></canvas>
+      <div class="aurora aurora-3"></div>
+      <div class="content center">
+        <p class="serif-sub light reveal-up" style="letter-spacing:.12em; font-size:1.35rem;">
+          Under a sky full of stars, there is only one wish on my heart…
+        </p>
+        <h1 class="handwritten question-title reveal-up d2" style="font-size:clamp(3.2rem, 8vw, 5.8rem);">
+          Just <span class="her-name accent-bright">You</span> + <span class="my-name accent-bright">Me</span>,<br />
+          Writing Something Beautiful? ❤️
+        </h1>
+        <p class="small-note reveal-up d3" style="font-size:1.15rem; max-width:600px; margin:0 auto;">
+          Whatever happens next, thank you for being the reason behind my happiest thoughts and warmest smiles.
+        </p>
+        <p class="handwritten reveal-up d4" style="font-size:2.8rem; color:#fecfef; margin-top:2rem; text-shadow:0 0 25px rgba(255,107,157,0.8);">
+          — With all my heart, <span class="my-name">Aunj</span> ❤️
+        </p>
+        <div class="final-hearts reveal-up d5">💕 💗 💖 💞 💓</div>
+      </div>
+    </section>
+
+  </div><!-- /pages-wrapper -->
+
+  <!-- ░░ BOTTOM FOOTER ░░ -->
+  <footer id="main-footer">
+    <div class="footer-container">
+      <!-- Left: Dedication -->
+      <div class="footer-left">
+        <span class="footer-note">Crafted with all my heart for <strong class="her-name">You</strong> • <strong class="my-name">Aunj</strong> ❤️</span>
+      </div>
+
+      <!-- Center: Status & Quick Pagination -->
+      <div class="footer-center">
+        <button class="footer-nav-btn prev" id="footer-prev-btn" onclick="prevPage()" title="Previous section">‹ Prev</button>
+        <div class="footer-page-info">
+          <span class="footer-badge" id="footer-page-num">1 / 9</span>
+          <span class="footer-title" id="footer-page-title">Hey, You... ❤️</span>
+        </div>
+        <button class="footer-nav-btn next" id="footer-next-btn" onclick="nextPage()" title="Next section">Next ›</button>
+      </div>
+
+      <!-- Right: Keyboard & Dot Indicators -->
+      <div class="footer-right">
+        <div id="dot-nav" class="footer-dots"></div>
+        <span class="footer-kbd-hint"><kbd>←</kbd> <kbd>→</kbd> keys</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
