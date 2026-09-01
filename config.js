@@ -1,5 +1,5 @@
 const CONFIG = {
-  MY_NAME:  "Aunj",        // ← Your name
+  MY_NAME:  "Me",        // ← Your name
   HER_NAME: "You",         // ← Addressed to her as "You" / "Someone Special"
 
   // ── PHOTOS ──────────────────────────────────────────────────
